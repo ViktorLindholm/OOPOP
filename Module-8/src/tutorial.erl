@@ -244,9 +244,9 @@ max([H | T]) ->
       Char::char().
 
 count(String, Char) ->
-    F = fun(Int, X) when X =:= Char ->
+    F = fun(X, Int) when X =:= Char ->
                 (Int+1);
-           (X,_)-> X
+           (_,Int)-> Int
         end,
     lists:foldl(F, 0, String).
 
@@ -266,7 +266,8 @@ count(String, Char) ->
 odd_and_even(List) ->
     F = fun(X, {{odd, Odd}, {even, Even}}) when X rem 2 == 0 ->
                 {{odd, Odd}, {even, [X | Even]}};
-           (X, {{odd, Odd}, {even, Even}})  -> tbi
+           (X, {{odd, Odd}, {even, Even}}) when X rem 2 =/= 0 ->
+                {{odd, [X|Odd]}, {even, Even}}
         end,
 
     lists:foldl(F, {{odd, []}, {even, []}}, List).

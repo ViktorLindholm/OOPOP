@@ -31,7 +31,7 @@ size({fifo, In, Out}) ->
 %% In.
 
 push({fifo, In, Out}, X) ->
-    tbi.
+    {fifo, [X|In],Out}.
 
 %% @doc TODO Add a description
 %% @throws 'empty fifo'
