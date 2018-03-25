@@ -35,7 +35,7 @@ push({fifo, In, Out}, X) ->
 
 %% @doc Returns the first element of the FIFO in a tuple together with the new FIFO.
 %% @throws 'empty fifo'
--spec pop(Fifo) -> {ELement, Fifo} when Fifo::fifo(), Element::term().
+-spec pop(Fifo) -> {Element, Fifo} when Fifo::fifo(), Element::term().
 
 %% pop should return {Value, NewFifo}
 
